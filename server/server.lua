@@ -41,7 +41,7 @@ CreateThread(function()
 	while GetResourceState('ox_inventory') ~= 'started' do Wait(500) end
 	local swapHook = ox_inventory:registerHook('swapItems', function(payload)
 		local start, destination, move_type = payload.fromInventory, payload.toInventory, payload.toType
-		local count_bagpacks = ox_inventory:GetItem(payload.source, 'backpack', nil, true)
+		local count_bagpacks = ox_inventory:GetItem(payload.toInventory, 'backpack', nil, true)
 	
 		if string.find(destination, 'bag_') then
 			TriggerClientEvent('ox_lib:notify', payload.source, {type = 'error', title = Strings.action_incomplete, description = Strings.backpack_in_backpack}) 
